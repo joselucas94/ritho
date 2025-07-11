@@ -903,7 +903,8 @@ export const groupsService = {
     let currentId: number | null = id;
 
     while (currentId) {
-      const { data: groupData, error } = await supabase
+      const { data: groupData, error }: 
+      { data: { id: number; name: string; parent_id: number | null } | null; error: any } = await supabase
         .from('groups')
         .select('id, name, parent_id')
         .eq('id', currentId)
